@@ -1,0 +1,1802 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/6/2022 4:15:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="EC2AMAZ-1FMELI5"
+  DTS:CreatorName="EC2AMAZ-1FMELI5\Administrator"
+  DTS:DTSID="{6558CD00-051B-4E6F-8DD1-7AB7DCC1CB9F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{1CE4D38C-E172-4FB5-B1BF-6C199435AD8D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ProductTable"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{AB256D36-D462-42E2-B34D-D0AE93F960CB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ProductTable"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ProductTable\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ProductTable\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ProductTable\Conditional Split.Inputs[Conditional Split Input].Columns[IdProductoDW]"
+                      cachedDataType="i4"
+                      cachedName="IdProductoDW"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[IdProductoDW]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ProductTable\Conditional Split.Outputs[newProduct]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="newProduct"
+                  synchronousInputId="Package\ProductTable\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[IdProductoDW]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(IdProductoDW)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ProductTable\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\ProductTable\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ProductTable\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\ProductTable\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ProductTable\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ProductTable\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ProductTable\DimProduct"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="DimProduct"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."Dim_Producto"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ProductTable\DimProduct.Connections[IDbConnection]"
+                  connectionManagerID="{F4C9AEB0-E7AD-48E9-ADE1-7C50101BE998}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[EC2AMAZ-1FMELI5.VentasDM]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].Columns[idCategoria]"
+                      cachedDataType="i4"
+                      cachedName="idCategoria"
+                      externalMetadataColumnId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[IdCategoria]"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idCategoria]" />
+                    <inputColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].Columns[idFamilia]"
+                      cachedDataType="i4"
+                      cachedName="idFamilia"
+                      externalMetadataColumnId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[IdFamilia]"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idFamilia]" />
+                    <inputColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].Columns[NombreCategoria]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreCategoria"
+                      externalMetadataColumnId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[NombreCategoria]"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreCategoria]" />
+                    <inputColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].Columns[NombreFamilia]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreFamilia"
+                      externalMetadataColumnId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[NombreFamilia]"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreFamilia]" />
+                    <inputColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].Columns[NombreProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreProducto"
+                      externalMetadataColumnId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[NombreProducto]"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreProducto]" />
+                    <inputColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].Columns[idProducto]"
+                      cachedDataType="i4"
+                      cachedName="idProducto"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[IdProducto]"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idProducto]" />
+                    <inputColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].Columns[idRubro]"
+                      cachedDataType="i4"
+                      cachedName="idRubro"
+                      externalMetadataColumnId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[IdRubro]"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idRubro]" />
+                    <inputColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].Columns[NombreRubro]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreRubro"
+                      externalMetadataColumnId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[NombreRubro]"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreRubro]" />
+                    <inputColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].Columns[idSeccion]"
+                      cachedDataType="i4"
+                      cachedName="idSeccion"
+                      externalMetadataColumnId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[IdSeccion]"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idSeccion]" />
+                    <inputColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].Columns[NombreSeccion]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreSeccion"
+                      externalMetadataColumnId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[NombreSeccion]"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreSeccion]" />
+                    <inputColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].Columns[idSubFamilia]"
+                      cachedDataType="i4"
+                      cachedName="idSubFamilia"
+                      externalMetadataColumnId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[IdSubFamilia]"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idSubFamilia]" />
+                    <inputColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].Columns[NombreSubFamilia]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreSubFamilia"
+                      externalMetadataColumnId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[NombreSubFamilia]"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreSubFamilia]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[Producto_Key]"
+                      dataType="i4"
+                      name="Producto_Key" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[IdProducto]"
+                      dataType="i4"
+                      name="IdProducto" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[IdSubFamilia]"
+                      dataType="i4"
+                      name="IdSubFamilia" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[IdFamilia]"
+                      dataType="i4"
+                      name="IdFamilia" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[IdCategoria]"
+                      dataType="i4"
+                      name="IdCategoria" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[IdRubro]"
+                      dataType="i4"
+                      name="IdRubro" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[IdSeccion]"
+                      dataType="i4"
+                      name="IdSeccion" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[NombreProducto]"
+                      dataType="wstr"
+                      length="50"
+                      name="NombreProducto" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[NombreSubFamilia]"
+                      dataType="wstr"
+                      length="50"
+                      name="NombreSubFamilia" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[NombreFamilia]"
+                      dataType="wstr"
+                      length="50"
+                      name="NombreFamilia" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[NombreCategoria]"
+                      dataType="wstr"
+                      length="50"
+                      name="NombreCategoria" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[NombreRubro]"
+                      dataType="wstr"
+                      length="50"
+                      name="NombreRubro" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input].ExternalColumns[NombreSeccion]"
+                      dataType="wstr"
+                      length="50"
+                      name="NombreSeccion" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ProductTable\DimProduct.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ProductTable\DimProduct.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\DimProduct.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ProductTable\DimProduct.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\DimProduct.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ProductTable\DMProduct"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="DMProduct"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        IdProducto
+FROM            Dim_Producto</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."Dim_Producto"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ProductTable\DMProduct.Connections[IDbConnection]"
+                  connectionManagerID="{F4C9AEB0-E7AD-48E9-ADE1-7C50101BE998}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[EC2AMAZ-1FMELI5.VentasDM]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Output].Columns[IdProducto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Output].ExternalColumns[IdProducto]"
+                      lineageId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Output].Columns[IdProducto]"
+                      name="IdProducto"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Output].ExternalColumns[IdProducto]"
+                      dataType="i4"
+                      name="IdProducto" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Error Output].Columns[IdProducto]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Error Output].Columns[IdProducto]"
+                      name="IdProducto" />
+                    <outputColumn
+                      refId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ProductTable\JoinTables"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="JoinTables"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[idProducto]"
+                      cachedDataType="i4"
+                      cachedName="idProducto"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idProducto]" />
+                    <inputColumn
+                      refId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[idCategoria]"
+                      cachedDataType="i4"
+                      cachedName="idCategoria"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idCategoria]" />
+                    <inputColumn
+                      refId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[idFamilia]"
+                      cachedDataType="i4"
+                      cachedName="idFamilia"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idFamilia]" />
+                    <inputColumn
+                      refId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[NombreCategoria]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreCategoria"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreCategoria]" />
+                    <inputColumn
+                      refId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[NombreFamilia]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreFamilia"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreFamilia]" />
+                    <inputColumn
+                      refId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[NombreProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreProducto"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreProducto]" />
+                    <inputColumn
+                      refId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[idRubro]"
+                      cachedDataType="i4"
+                      cachedName="idRubro"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idRubro]" />
+                    <inputColumn
+                      refId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[NombreRubro]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreRubro"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreRubro]" />
+                    <inputColumn
+                      refId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[idSeccion]"
+                      cachedDataType="i4"
+                      cachedName="idSeccion"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idSeccion]" />
+                    <inputColumn
+                      refId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[NombreSeccion]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreSeccion"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreSeccion]" />
+                    <inputColumn
+                      refId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[idSubFamilia]"
+                      cachedDataType="i4"
+                      cachedName="idSubFamilia"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idSubFamilia]" />
+                    <inputColumn
+                      refId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[NombreSubFamilia]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreSubFamilia"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreSubFamilia]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\ProductTable\JoinTables.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ProductTable\JoinTables.Inputs[Merge Join Right Input].Columns[IdProducto]"
+                      cachedDataType="i4"
+                      cachedName="IdProducto"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\ProductTable\order dim.Outputs[Sort Output].Columns[IdProducto]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idCategoria]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idCategoria]"
+                      name="idCategoria">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[idCategoria]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idFamilia]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idFamilia]"
+                      name="idFamilia">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[idFamilia]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreCategoria]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreCategoria]"
+                      name="NombreCategoria">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[NombreCategoria]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreFamilia]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreFamilia]"
+                      name="NombreFamilia">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[NombreFamilia]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreProducto]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreProducto]"
+                      name="NombreProducto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[NombreProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idProducto]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idProducto]"
+                      name="idProducto"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[idProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idRubro]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idRubro]"
+                      name="idRubro">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[idRubro]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreRubro]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreRubro]"
+                      name="NombreRubro">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[NombreRubro]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idSeccion]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idSeccion]"
+                      name="idSeccion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[idSeccion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreSeccion]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreSeccion]"
+                      name="NombreSeccion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[NombreSeccion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idSubFamilia]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[idSubFamilia]"
+                      name="idSubFamilia">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[idSubFamilia]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreSubFamilia]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[NombreSubFamilia]"
+                      name="NombreSubFamilia">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ProductTable\JoinTables.Inputs[Merge Join Left Input].Columns[NombreSubFamilia]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[IdProductoDW]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\JoinTables.Outputs[Merge Join Output].Columns[IdProductoDW]"
+                      name="IdProductoDW">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ProductTable\JoinTables.Inputs[Merge Join Right Input].Columns[IdProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ProductTable\orden"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="orden"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\ProductTable\orden.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ProductTable\orden.Inputs[Sort Input].Columns[idCategoria]"
+                      cachedDataType="i4"
+                      cachedName="idCategoria"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idCategoria]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ProductTable\orden.Inputs[Sort Input].Columns[idFamilia]"
+                      cachedDataType="i4"
+                      cachedName="idFamilia"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idFamilia]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ProductTable\orden.Inputs[Sort Input].Columns[NombreCategoria]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreCategoria"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreCategoria]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ProductTable\orden.Inputs[Sort Input].Columns[NombreFamilia]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreFamilia"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreFamilia]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ProductTable\orden.Inputs[Sort Input].Columns[NombreProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreProducto"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreProducto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ProductTable\orden.Inputs[Sort Input].Columns[idProducto]"
+                      cachedDataType="i4"
+                      cachedName="idProducto"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idProducto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ProductTable\orden.Inputs[Sort Input].Columns[idRubro]"
+                      cachedDataType="i4"
+                      cachedName="idRubro"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idRubro]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ProductTable\orden.Inputs[Sort Input].Columns[NombreRubro]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreRubro"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreRubro]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ProductTable\orden.Inputs[Sort Input].Columns[idSeccion]"
+                      cachedDataType="i4"
+                      cachedName="idSeccion"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idSeccion]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ProductTable\orden.Inputs[Sort Input].Columns[NombreSeccion]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreSeccion"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreSeccion]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ProductTable\orden.Inputs[Sort Input].Columns[idSubFamilia]"
+                      cachedDataType="i4"
+                      cachedName="idSubFamilia"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idSubFamilia]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ProductTable\orden.Inputs[Sort Input].Columns[NombreSubFamilia]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="NombreSubFamilia"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreSubFamilia]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ProductTable\orden.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idCategoria]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idCategoria]"
+                      name="idCategoria">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idCategoria]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idFamilia]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idFamilia]"
+                      name="idFamilia">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idFamilia]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreCategoria]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreCategoria]"
+                      name="NombreCategoria">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreCategoria]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreFamilia]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreFamilia]"
+                      name="NombreFamilia">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreFamilia]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreProducto]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreProducto]"
+                      name="NombreProducto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idProducto]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idProducto]"
+                      name="idProducto"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idRubro]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idRubro]"
+                      name="idRubro">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idRubro]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreRubro]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreRubro]"
+                      name="NombreRubro">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreRubro]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idSeccion]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idSeccion]"
+                      name="idSeccion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idSeccion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreSeccion]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreSeccion]"
+                      name="NombreSeccion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreSeccion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idSubFamilia]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[idSubFamilia]"
+                      name="idSubFamilia">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idSubFamilia]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreSubFamilia]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\orden.Outputs[Sort Output].Columns[NombreSubFamilia]"
+                      name="NombreSubFamilia">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreSubFamilia]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ProductTable\order dim"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="order dim"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\ProductTable\order dim.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ProductTable\order dim.Inputs[Sort Input].Columns[IdProducto]"
+                      cachedDataType="i4"
+                      cachedName="IdProducto"
+                      lineageId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Output].Columns[IdProducto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ProductTable\order dim.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ProductTable\order dim.Outputs[Sort Output].Columns[IdProducto]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\order dim.Outputs[Sort Output].Columns[IdProducto]"
+                      name="IdProducto"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ProductTable\DMProduct.Outputs[ADO NET Source Output].Columns[IdProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ProductTable\Product"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="Product"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        Categoria.idCategoria, Familia.idFamilia, Categoria.NombreCategoria, Familia.NombreFamilia, Producto.NombreProducto, Producto.idProducto, Rubro.idRubro, Rubro.NombreRubro, Seccion.idSeccion, Seccion.NombreSeccion, 
+                         SubFamilia.idSubFamilia, SubFamilia.NombreSubFamilia
+FROM            Categoria INNER JOIN
+                         Familia ON Categoria.idCategoria = Familia.idCategoria INNER JOIN
+                         Rubro ON Categoria.idRubro = Rubro.idRubro INNER JOIN
+                         Seccion ON Rubro.idSeccion = Seccion.idSeccion INNER JOIN
+                         SubFamilia ON Familia.idFamilia = SubFamilia.idFamilia INNER JOIN
+                         Producto ON SubFamilia.idSubFamilia = Producto.idSubFamilia</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ProductTable\Product.Connections[IDbConnection]"
+                  connectionManagerID="{E0764305-5703-423A-A442-24D44F2A3656}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[EC2AMAZ-1FMELI5.Venta1]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ProductTable\Product.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idCategoria]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[idCategoria]"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idCategoria]"
+                      name="idCategoria"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idFamilia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[idFamilia]"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idFamilia]"
+                      name="idFamilia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreCategoria]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[NombreCategoria]"
+                      length="30"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreCategoria]"
+                      name="NombreCategoria"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreFamilia]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[NombreFamilia]"
+                      length="30"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreFamilia]"
+                      name="NombreFamilia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreProducto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[NombreProducto]"
+                      length="30"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreProducto]"
+                      name="NombreProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idProducto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[idProducto]"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idProducto]"
+                      name="idProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idRubro]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[idRubro]"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idRubro]"
+                      name="idRubro"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreRubro]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[NombreRubro]"
+                      length="30"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreRubro]"
+                      name="NombreRubro"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idSeccion]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[idSeccion]"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idSeccion]"
+                      name="idSeccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreSeccion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[NombreSeccion]"
+                      length="30"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreSeccion]"
+                      name="NombreSeccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idSubFamilia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[idSubFamilia]"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[idSubFamilia]"
+                      name="idSubFamilia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreSubFamilia]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[NombreSubFamilia]"
+                      length="30"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Output].Columns[NombreSubFamilia]"
+                      name="NombreSubFamilia"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[idCategoria]"
+                      dataType="i4"
+                      name="idCategoria" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[idFamilia]"
+                      dataType="i4"
+                      name="idFamilia" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[NombreCategoria]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreCategoria" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[NombreFamilia]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreFamilia" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[NombreProducto]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreProducto" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[idProducto]"
+                      dataType="i4"
+                      name="idProducto" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[idRubro]"
+                      dataType="i4"
+                      name="idRubro" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[NombreRubro]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreRubro" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[idSeccion]"
+                      dataType="i4"
+                      name="idSeccion" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[NombreSeccion]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreSeccion" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[idSubFamilia]"
+                      dataType="i4"
+                      name="idSubFamilia" />
+                    <externalMetadataColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Output].ExternalColumns[NombreSubFamilia]"
+                      dataType="wstr"
+                      length="30"
+                      name="NombreSubFamilia" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[idCategoria]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[idCategoria]"
+                      name="idCategoria" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[idFamilia]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[idFamilia]"
+                      name="idFamilia" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[NombreCategoria]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[NombreCategoria]"
+                      name="NombreCategoria" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[NombreFamilia]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[NombreFamilia]"
+                      name="NombreFamilia" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[NombreProducto]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[NombreProducto]"
+                      name="NombreProducto" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[idProducto]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[idProducto]"
+                      name="idProducto" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[idRubro]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[idRubro]"
+                      name="idRubro" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[NombreRubro]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[NombreRubro]"
+                      name="NombreRubro" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[idSeccion]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[idSeccion]"
+                      name="idSeccion" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[NombreSeccion]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[NombreSeccion]"
+                      name="NombreSeccion" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[idSubFamilia]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[idSubFamilia]"
+                      name="idSubFamilia" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[NombreSubFamilia]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[NombreSubFamilia]"
+                      name="NombreSubFamilia" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ProductTable\Product.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ProductTable.Paths[ADO NET Source Output]"
+              endId="Package\ProductTable\orden.Inputs[Sort Input]"
+              name="ADO NET Source Output"
+              startId="Package\ProductTable\Product.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\ProductTable.Paths[ADO NET Source Output1]"
+              endId="Package\ProductTable\order dim.Inputs[Sort Input]"
+              name="ADO NET Source Output"
+              startId="Package\ProductTable\DMProduct.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\ProductTable.Paths[Merge Join Output]"
+              endId="Package\ProductTable\Conditional Split.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\ProductTable\JoinTables.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\ProductTable.Paths[newProduct]"
+              endId="Package\ProductTable\DimProduct.Inputs[ADO NET Destination Input]"
+              name="newProduct"
+              startId="Package\ProductTable\Conditional Split.Outputs[newProduct]" />
+            <path
+              refId="Package\ProductTable.Paths[Sort Output]"
+              endId="Package\ProductTable\JoinTables.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\ProductTable\orden.Outputs[Sort Output]" />
+            <path
+              refId="Package\ProductTable.Paths[Sort Output1]"
+              endId="Package\ProductTable\JoinTables.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\ProductTable\order dim.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="141,42"
+          Id="Package\ProductTable"
+          TopLeft="124,70" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ProductTable">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="115,42"
+          Id="Package\ProductTable\Product"
+          TopLeft="20,8" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\ProductTable\DMProduct"
+          TopLeft="186,8" />
+        <NodeLayout
+          Size="106,42"
+          Id="Package\ProductTable\orden"
+          TopLeft="24,79" />
+        <EdgeLayout
+          Id="Package\ProductTable.Paths[ADO NET Source Output]"
+          TopLeft="77.25,50">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="125,42"
+          Id="Package\ProductTable\order dim"
+          TopLeft="187,81" />
+        <EdgeLayout
+          Id="Package\ProductTable.Paths[ADO NET Source Output1]"
+          TopLeft="250.25,50">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="128,42"
+          Id="Package\ProductTable\JoinTables"
+          TopLeft="90,164" />
+        <EdgeLayout
+          Id="Package\ProductTable.Paths[Sort Output]"
+          TopLeft="77,121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57,43"
+              Start="0,0"
+              End="57,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.4814814814815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.4814814814815"
+                    Point2="0,25.4814814814815"
+                    Point3="4,25.4814814814815" />
+                  <mssgle:LineSegment
+                    End="53,25.4814814814815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53,25.4814814814815"
+                    Point2="57,25.4814814814815"
+                    Point3="57,29.4814814814815" />
+                  <mssgle:LineSegment
+                    End="57,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ProductTable.Paths[Sort Output1]"
+          TopLeft="249.5,123">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-75.5,41"
+              Start="0,0"
+              End="-75.5,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2962962962963" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2962962962963"
+                    Point2="0,24.2962962962963"
+                    Point3="-4,24.2962962962963" />
+                  <mssgle:LineSegment
+                    End="-71.5,24.2962962962963" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-71.5,24.2962962962963"
+                    Point2="-75.5,24.2962962962963"
+                    Point3="-75.5,28.2962962962963" />
+                  <mssgle:LineSegment
+                    End="-75.5,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155,42"
+          Id="Package\ProductTable\Conditional Split"
+          TopLeft="350,166" />
+        <EdgeLayout
+          Id="Package\ProductTable.Paths[Merge Join Output]"
+          TopLeft="218,186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="132,0"
+              Start="0,0"
+              End="124.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="124.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="133,42"
+          Id="Package\ProductTable\DimProduct"
+          TopLeft="568,168" />
+        <EdgeLayout
+          Id="Package\ProductTable.Paths[newProduct]"
+          TopLeft="505,188">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63,0"
+              Start="0,0"
+              End="55.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="55.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-7.6750390625,5,70.850078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ProductTable\Product">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ProductTable\DMProduct">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ProductTable\DimProduct">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

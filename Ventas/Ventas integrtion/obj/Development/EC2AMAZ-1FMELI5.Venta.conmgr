@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="EC2AMAZ-1FMELI5.Venta1"
+  DTS:DTSID="{E0764305-5703-423A-A442-24D44F2A3656}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=EC2AMAZ-1FMELI5;Initial Catalog=Venta;Integrated Security=True;Application Name=SSIS-Ventas integrtion-{E0764305-5703-423A-A442-24D44F2A3656}EC2AMAZ-1FMELI5.Venta1;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

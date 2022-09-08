@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "Ventas integrtion", "Ventas integrtion\Ventas integrtion.dtproj", "{76B4190F-08CE-46AB-8956-0E05A5FBFDD7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76B4190F-08CE-46AB-8956-0E05A5FBFDD7}.Development|Default.ActiveCfg = Development
+		{76B4190F-08CE-46AB-8956-0E05A5FBFDD7}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FAF0A0EA-CB8A-4231-8CD2-0595AE841937}
+	EndGlobalSection
+EndGlobal
