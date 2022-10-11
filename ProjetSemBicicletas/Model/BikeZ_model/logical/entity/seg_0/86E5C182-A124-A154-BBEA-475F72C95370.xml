@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="86E5C182-A124-A154-BBEA-475F72C95370" name="dim_producto">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:27:12 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<typeID>2</typeID>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ProductoID" id="E333CFE3-8428-B915-79BC-E6115A8814E5">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:27:12 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Producto" id="B9C5C2E7-5BCD-6FAF-C1A2-C13B795D87FB">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:27:12 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CategoriaID" id="42A82588-4183-DA57-E2A9-0793BA457CCC">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:31:56 UTC</createdTime>
+<generatorID>E9D72BAE-DE2B-52F8-895A-46676AE7845C</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<referedAttribute>88791D66-6BAC-2EA9-6018-75B1DBA3B025</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4BD4F45B-A475-A8E5-C345-2E34765E0B50" name="dim_categoria PK">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:27:12 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>E333CFE3-8428-B915-79BC-E6115A8814E5</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

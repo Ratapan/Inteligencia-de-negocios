@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_4" directorySegmentName="seg_0" id="E13D0E1C-71F4-A022-8F37-E3A958056C42">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:34:02 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<sourcePk>EDF0668B-BD77-6F3F-2152-A7F82E1D2989</sourcePk>
+<targetPk>87E6E77A-F1AB-F959-CA56-3A1388C0F14F</targetPk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>E566A623-3235-4F82-3E6A-31970A7F0BBE</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>CE515B8C-EF75-D326-5481-E73886F70E11</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

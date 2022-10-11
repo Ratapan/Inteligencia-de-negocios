@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E566A623-3235-4F82-3E6A-31970A7F0BBE" name="dim_detalle_venta">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:27:12 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<typeID>2</typeID>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="DetalleVentaID" id="95FE142E-D903-6879-6D30-B7DA6BC4D73D">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:27:12 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Cantidad" id="7FE5DC90-6E76-9BA1-8066-E50BEEED9C69">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:27:12 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PrecioUnitario" id="7D834BD3-B0FE-9161-AC32-1C3F3FA4D9CE">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:30:07 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT043</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<dataTypeScale>10</dataTypeScale>
+<ownDataTypeParameters>,2,10</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ProductoID" id="316F5A89-8825-EF64-6A57-CDBB45E3B7C4">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:33:46 UTC</createdTime>
+<generatorID>E31019EE-80DA-A8FA-FDB8-01CB205F0016</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<referedAttribute>E333CFE3-8428-B915-79BC-E6115A8814E5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="VentaID" id="584F5100-C0CA-9D7C-6278-927B6C45EA5C">
+<createdBy>Administrator</createdBy>
+<createdTime>2022-10-06 16:23:49 UTC</createdTime>
+<generatorID>E13D0E1C-71F4-A022-8F37-E3A958056C42</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<referedAttribute>901EF8A1-ADC6-2F11-6B4D-F266D37DBC94</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="EDF0668B-BD77-6F3F-2152-A7F82E1D2989" name="dim_categoria PK">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:27:12 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>95FE142E-D903-6879-6D30-B7DA6BC4D73D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,114 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B6293A15-3C6F-BBCD-7663-4BDA05C7D02E" name="dim_detalle_venta">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>E566A623-3235-4F82-3E6A-31970A7F0BBE</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<typeID>2</typeID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="DetalleVentaID" id="88766BD8-1133-C44B-D39F-24719F8B4268">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>95FE142E-D903-6879-6D30-B7DA6BC4D73D</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Cantidad" id="6DD2CAB4-B2AD-E138-AFF3-2D9FB66D054E">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>7FE5DC90-6E76-9BA1-8066-E50BEEED9C69</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT018</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PrecioUnitario" id="DA0D8D1B-BEC7-680E-6A49-495E51C94711">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>7D834BD3-B0FE-9161-AC32-1C3F3FA4D9CE</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT043</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<dataTypeScale>10</dataTypeScale>
+<ownDataTypeParameters>,2,10</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dim_producto_ProductoID" id="D80F7FF3-2744-EE47-24B1-A840167F82E6">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>316F5A89-8825-EF64-6A57-CDBB45E3B7C4</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4DC6418B-3D38-2288-10D3-1EB7F1C1906C" referredColumn="DBB006AD-2965-85E8-04D0-2CA0C1B6D680"/>
+</associations>
+</Column>
+<Column name="fact_ventas_VentaID" id="C92B1F44-CC74-0BF0-0EBB-D2C3F42C8E3A">
+<createdBy>Administrator</createdBy>
+<createdTime>2022-10-06 16:24:38 UTC</createdTime>
+<generatorID>584F5100-C0CA-9D7C-6278-927B6C45EA5C</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9061B90A-AC3F-9BAA-9C49-7989496271AE" referredColumn="0D24F328-2F91-3A9E-3B8B-12BDE558A3DC"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="95208A0E-682C-606A-CB3B-0E9BB2618162" name="dim_detalle_venta_PK">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>EDF0668B-BD77-6F3F-2152-A7F82E1D2989</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="88766BD8-1133-C44B-D39F-24719F8B4268"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C6477D3A-97CD-1806-0AAB-3EF008B86308" name="dim_producto_productoid">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>E31019EE-80DA-A8FA-FDB8-01CB205F0016</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D80F7FF3-2744-EE47-24B1-A840167F82E6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2CEE8795-F7FB-5364-F456-9FE5C916C0EC" name="fact_ventas_FK">
+<createdBy>Administrator</createdBy>
+<createdTime>2022-10-06 16:24:38 UTC</createdTime>
+<generatorID>E13D0E1C-71F4-A022-8F37-E3A958056C42</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C92B1F44-CC74-0BF0-0EBB-D2C3F42C8E3A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

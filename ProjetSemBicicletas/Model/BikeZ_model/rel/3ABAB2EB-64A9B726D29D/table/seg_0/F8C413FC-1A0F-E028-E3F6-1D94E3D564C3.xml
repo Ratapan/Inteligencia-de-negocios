@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F8C413FC-1A0F-E028-E3F6-1D94E3D564C3" name="dim_territorio">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>19FDD3A5-A4E9-6BF4-9A4F-753691793997</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<typeID>2</typeID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="TerritorioID" id="8E3D8BB6-3803-EC19-B831-09552082A704">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>69CAFED3-157A-EBD7-405B-CBB89438DE1C</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Territorio" id="EED8F5CE-9B08-FF00-1EC1-510F365F92C4">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>D0CEFA22-8031-6C12-663C-FD3321CA134D</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dim_pais_PaisID" id="5D9BA299-BD85-11BE-DE66-BFA2F34837CC">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>23F17159-4EBA-F5B3-CA27-3DB6EE02D59E</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>3 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A190974D-3D29-1253-EE07-2A350381EEA0" referredColumn="74AC655D-E2F5-9E89-61C9-9BD1B1274CFA"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4FB4F339-988E-F6C5-5CC2-2ED1A9543B6E" name="dim_territorio_PK">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>13D95B3F-CBFB-F594-7AEF-102F9B87D4C9</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8E3D8BB6-3803-EC19-B831-09552082A704"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="84481DD9-F2ED-E907-8BDE-64F034057B7D" name="dim_territorio_dim_pais_FK">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>1CA875BB-1A59-66F7-2C21-83EDD963A048</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5D9BA299-BD85-11BE-DE66-BFA2F34837CC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

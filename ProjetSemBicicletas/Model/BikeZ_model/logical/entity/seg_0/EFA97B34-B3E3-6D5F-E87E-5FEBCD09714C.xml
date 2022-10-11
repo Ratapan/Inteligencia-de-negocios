@@ -1,0 +1,60 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EFA97B34-B3E3-6D5F-E87E-5FEBCD09714C" name="dim_categoria">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:24:42 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<typeID>2</typeID>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="CategoriaID" id="88791D66-6BAC-2EA9-6018-75B1DBA3B025">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:25:27 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Categoria" id="B75FC979-C539-B7DC-8901-10E2BAB5ECC8">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:25:44 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4DDD5695-22EF-0349-E43F-C896BB754E8D" name="dim_categoria PK">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:25:43 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>88791D66-6BAC-2EA9-6018-75B1DBA3B025</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

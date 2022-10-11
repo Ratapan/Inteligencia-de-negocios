@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="localhost.BikeZ_DM"
+  DTS:DTSID="{C8127EDB-E2F1-4887-A5B9-8C28822D9C4C}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=localhost;Initial Catalog=BikeZ_DM;Integrated Security=True;Application Name=SSIS-ProjetSemBicicletas-{C8127EDB-E2F1-4887-A5B9-8C28822D9C4C}localhost.BikeZ_DM;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

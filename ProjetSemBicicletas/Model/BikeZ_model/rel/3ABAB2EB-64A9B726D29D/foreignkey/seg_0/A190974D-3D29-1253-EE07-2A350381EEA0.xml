@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A190974D-3D29-1253-EE07-2A350381EEA0" containerWithKeyObject="F8C413FC-1A0F-E028-E3F6-1D94E3D564C3" localFKIndex="84481DD9-F2ED-E907-8BDE-64F034057B7D" name="dim_territorio_dim_pais_FK">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>1CA875BB-1A59-66F7-2C21-83EDD963A048</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<referredTableLongName>dim_pais</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>2AA34C57-0CBE-D44F-2938-415E6E46D70D</referredTableID>
+<keyObject>9F31C90E-8336-318B-E6DB-1E91AA11EE0D</keyObject>
+<referredKeyID>9F31C90E-8336-318B-E6DB-1E91AA11EE0D</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>PaisID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
