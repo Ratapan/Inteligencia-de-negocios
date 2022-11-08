@@ -91,9 +91,12 @@ ALTER TABLE dim_detalle_venta
         REFERENCES fact_ventas ( ventaid );;fk FOREIGN KEY ( fact_ventas_ventaid )
         REFERENCES fact_ventas ( ventaid );
 ```
+
 ### Modelos
+
 ![Img Model](./Imgs/ModelLogico.PNG "Modelo Logico")
 ![Img Model](./Imgs/ModelRel.PNG "Modelo Relacional")
+
 ### Drop
 
 ```sql
@@ -119,6 +122,7 @@ DELETE FROM fact_ventas;
 ```
 
 ### ETL
+
 ![Img ETL](./Imgs/Flow.PNG "ETL")
 ![Img ETL](./Imgs/Categoria.PNG "ETL")
 ![Img ETL](./Imgs/Detalle.PNG "ETL")

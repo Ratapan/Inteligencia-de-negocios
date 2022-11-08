@@ -1,0 +1,169 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="a859a1a7-2eb8-4427-8398-d556c34fd614" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Bike Z DM</ID>
+  <Name>Bike Z DM</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Dimensions>
+    <Dimension dwd:design-time-name="90c42d5b-c882-4d74-8e93-a8e456fce995">
+      <ID>Dim Territorio Territorioid</ID>
+      <Name>Dim Territorio Territorioid</Name>
+      <DimensionID>Dim Territorio</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="7d7ab6d0-4cd8-4861-831b-9c21095c041f">
+          <AttributeID>Territorioid</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="790485b4-2363-4d13-87e9-76098cd32c27">
+          <AttributeID>Paisid</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="c9712ebd-eb8f-4b11-8e0a-6ab97d3af117">
+      <ID>Dim Empleado Empleadoid - Dim Territorio Territorioid</ID>
+      <Name>Dim Empleado Empleadoid - Dim Territorio Territorioid</Name>
+      <DimensionID>Dim Territorio</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="b95f60ff-3b6f-4ba6-9ead-96dee9789beb">
+          <AttributeID>Territorioid</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="9f7e1b71-cc2b-40da-bdfd-4f831a490a32">
+          <AttributeID>Paisid</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="16e0c48c-a8bd-4bcf-9045-c6fe70ad9124">
+      <ID>Dim Empleado</ID>
+      <Name>Dim Empleado</Name>
+      <DimensionID>Dim Empleado</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="303fe37f-8256-4de0-b8f0-fb80647ef8bd">
+          <AttributeID>Empleadoid</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="6c4e59e8-c9a4-4e91-8e84-fc62da38b059">
+          <AttributeID>Dim Territorio Territorioid</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+  </Dimensions>
+  <MeasureGroups>
+    <MeasureGroup dwd:design-time-name="89f32094-4a94-4661-83fc-a7213b1d5c24">
+      <ID>Fact Ventas</ID>
+      <Name>Fact Ventas</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Measures>
+        <Measure dwd:design-time-name="f816b74b-a4db-467e-b335-d9bff26afeb3">
+          <ID>Fact Ventas Count</ID>
+          <Name>Fact Ventas Count</Name>
+          <AggregateFunction>Count</AggregateFunction>
+          <Source dwd:design-time-name="01b44645-42c5-4983-8997-ca0a1dd3e63b">
+            <DataType>Integer</DataType>
+            <DataSize>4</DataSize>
+            <Source xsi:type="RowBinding" dwd:design-time-name="2aa0bbc4-595d-4849-94b6-3e6674c42d2c">
+              <TableID>dbo_fact_ventas</TableID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="6d60aaf9-496c-4dba-a0f4-84f215575c02">
+          <CubeDimensionID>Dim Empleado</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="9a99bb66-a56e-4f43-a8fd-3d0e6151f418">
+              <AttributeID>Empleadoid</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="94a040ea-4c92-40af-9669-0c8c89a3b7ed">
+                  <NullProcessing>UnknownMember</NullProcessing>
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="3830d5a8-9271-4494-9db0-2a23415cc637">
+                    <TableID>dbo_fact_ventas</TableID>
+                    <ColumnID>dim_empleado_empleadoid</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="fd38a153-8396-4541-906b-b644304d0d32">
+          <CubeDimensionID>Dim Territorio Territorioid</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="c5d1125b-a01b-4c1e-827b-4fb79ec0ed42">
+              <AttributeID>Territorioid</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="6ca80af1-15ff-4f68-bbdf-8c4a4d3f689d">
+                  <NullProcessing>UnknownMember</NullProcessing>
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="4b23167f-b5aa-437b-9637-e1f652f0b4a1">
+                    <TableID>dbo_fact_ventas</TableID>
+                    <ColumnID>dim_territorio_territorioid</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="ReferenceMeasureGroupDimension" dwd:design-time-name="93fa3e4b-a4e3-4ae1-a9ca-d62195ced526">
+          <CubeDimensionID>Dim Empleado Empleadoid - Dim Territorio Territorioid</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="b9c4d8c1-a335-49b3-ad54-f87379e68eed">
+              <AttributeID>Territorioid</AttributeID>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+          <IntermediateCubeDimensionID>Dim Empleado</IntermediateCubeDimensionID>
+          <IntermediateGranularityAttributeID>Dim Territorio Territorioid</IntermediateGranularityAttributeID>
+          <Materialization>Regular</Materialization>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+    </MeasureGroup>
+  </MeasureGroups>
+  <Source dwd:design-time-name="01390c3d-06ab-47e8-b572-e0f70bc251d5">
+    <DataSourceViewID>Bike Z DM</DataSourceViewID>
+  </Source>
+</Cube>
