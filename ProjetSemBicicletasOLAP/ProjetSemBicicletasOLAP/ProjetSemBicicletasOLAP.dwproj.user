@@ -3,7 +3,7 @@
     <Configuration>
       <Name>Development</Name>
       <Options>
-        <TargetServer>localhost</TargetServer>
+        <TargetServer>EC2AMAZ-1FMELI5</TargetServer>
         <TargetDatabase>ProjetSemBicicletasOLAP</TargetDatabase>
         <StartObject>
           <ObjectId></ObjectId>

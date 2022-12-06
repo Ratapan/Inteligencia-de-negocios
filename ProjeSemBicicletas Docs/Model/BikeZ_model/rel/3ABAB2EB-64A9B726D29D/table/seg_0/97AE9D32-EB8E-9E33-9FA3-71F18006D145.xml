@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="97AE9D32-EB8E-9E33-9FA3-71F18006D145" name="dim_empleado">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>ED0F3A70-7347-191D-4582-966A4BEAC995</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<typeID>2</typeID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="EmpleadoID" id="76CC33CA-1B0A-728A-FA56-8DA0267092D7">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>B41C7746-0E86-8CBD-E74A-2E09480D546D</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Cargo" id="7925E482-B4EF-DBF0-39F9-C4EDDDB7EF0C">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>A3D66CA3-5E91-D7E8-09E2-0B3AA4E9A5BC</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dim_territorio_TerritorioID" id="7BB0722A-D677-2158-8D53-20298DBCB37B">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>31C9FC4B-94C9-B9C8-9AD3-D9B22E0418AA</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="42DF354B-5227-9F03-A499-8936036DFFBC" referredColumn="8E3D8BB6-3803-EC19-B831-09552082A704"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="91B92E0A-0B2A-100A-6216-A155CCC415B8" name="dim_empleado_PK">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>381895A0-A158-66E0-10A7-BB470A049817</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="76CC33CA-1B0A-728A-FA56-8DA0267092D7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="19776E35-D7F6-997B-C367-6743ADABBCF1" name="dim_territorio_territorioid">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>61455078-4A9C-A6FA-6669-2A8B6BC25C01</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7BB0722A-D677-2158-8D53-20298DBCB37B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

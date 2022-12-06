@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D06F131D-9079-44B2-5941-7C39C93A88B5" containerWithKeyObject="7860A98D-032E-BB8A-6A0F-70BC41F99C2A" localFKIndex="2D071EB6-9459-EB9E-D42A-F64950A9352E" name="dim_categoria_categoriaid">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:41:24 UTC</createdTime>
+<generatorID>E9D72BAE-DE2B-52F8-895A-46676AE7845C</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<referredTableLongName>dim_categoria</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>C6B70E5A-8B90-957F-04DB-68FA19789A02</referredTableID>
+<keyObject>CFA02878-9812-3767-1683-45CE68585FA2</keyObject>
+<referredKeyID>CFA02878-9812-3767-1683-45CE68585FA2</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>CategoriaID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

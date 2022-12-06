@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CE515B8C-EF75-D326-5481-E73886F70E11" name="fact_ventas">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:22:13 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<typeID>1</typeID>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="VentaID" id="901EF8A1-ADC6-2F11-6B4D-F266D37DBC94">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:22:43 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Fecha" id="32A9B1A5-B9D3-352A-0840-94DAA46B083C">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:23:49 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TerritorioID" id="5C1F6A8E-36CA-FF4F-74CF-3AE7F529BDE6">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:37:44 UTC</createdTime>
+<generatorID>599BCFC3-6712-86BE-6A32-FE13B318E9B1</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<referedAttribute>69CAFED3-157A-EBD7-405B-CBB89438DE1C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EmpleadoID" id="04D0BD29-DB96-AECE-BACA-486F6852861B">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:39:20 UTC</createdTime>
+<generatorID>94FAD9EC-544F-D8F1-A4A3-85033C87CE7A</generatorID>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="true"/>
+</engineerTo>
+<referedAttribute>B41C7746-0E86-8CBD-E74A-2E09480D546D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="87E6E77A-F1AB-F959-CA56-3A1388C0F14F" name="fact_ventas PK">
+<createdBy>javie</createdBy>
+<createdTime>2022-09-01 17:24:25 UTC</createdTime>
+<ownerDesignName>BikeZ_model</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="3ABAB2EB-F675-F2C4-A646-64A9B726D29D" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>901EF8A1-ADC6-2F11-6B4D-F266D37DBC94</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

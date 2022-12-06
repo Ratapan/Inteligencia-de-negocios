@@ -17,36 +17,8 @@
         </ProjectItem>
       </Dependencies>
     </ProjectItem>
-    <ProjectItem>
-      <Name>Bike Z DM Detalles.cube</Name>
-      <FullPath>Bike Z DM Detalles.cube</FullPath>
-      <Dependencies>
-        <ProjectItem>
-          <Name>Bike Z DM Detalles.partitions</Name>
-          <FullPath>Bike Z DM Detalles.partitions</FullPath>
-        </ProjectItem>
-      </Dependencies>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Bike Z DM Full.cube</Name>
-      <FullPath>Bike Z DM Full.cube</FullPath>
-      <Dependencies>
-        <ProjectItem>
-          <Name>Bike Z DM Full.partitions</Name>
-          <FullPath>Bike Z DM Full.partitions</FullPath>
-        </ProjectItem>
-      </Dependencies>
-    </ProjectItem>
   </Cubes>
   <Dimensions>
-    <ProjectItem>
-      <Name>Dim Empleado.dim</Name>
-      <FullPath>Dim Empleado.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Dim Territorio.dim</Name>
-      <FullPath>Dim Territorio.dim</FullPath>
-    </ProjectItem>
     <ProjectItem>
       <Name>Dim Producto.dim</Name>
       <FullPath>Dim Producto.dim</FullPath>
